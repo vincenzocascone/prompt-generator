@@ -7,7 +7,7 @@ Prompt Generator is a flexible and user-friendly package that offers customizabl
 Prompt Generator can be installed easily using pip, a package installer for Python:
 
 ```bash
-pip install prompt_generator
+pip install prompt-generator
 ```
 
 ## Features
