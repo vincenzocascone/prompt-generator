@@ -1,7 +1,7 @@
 import os
 import re
-import pyperclip
 import argparse
+import pyperclip
 
 
 class TerminalColor:
@@ -20,7 +20,7 @@ class TerminalColor:
 def read_file(file_path):
     """Reads a file and returns its content."""
     try:
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding='utf-8') as file:
             return file.read()
     except IOError:
         print(f"{TerminalColor.WARNING}Failed to open {file_path}{TerminalColor.ENDC}")
@@ -46,13 +46,15 @@ def parse_content(md_file_path):
             file_content = read_file(full_file_path)
             _, file_extension = os.path.splitext(full_file_path)
 
-            # If the linked file is a markdown file, parse it as well
+           # If the linked file is a markdown file, parse it as well
             if file_extension == '.md':
                 file_content = parse_content(full_file_path)
-
-            # Replace the markdown link with the file content in a code block
-            content = content.replace(
-                f'[{text}]({file_path})', f'```{file_extension[1:]}\n{file_content}\n```')
+                content = content.replace(
+                    f'[{text}]({file_path})', f'{file_content}')
+            else:
+                # Replace the markdown link with the file content in a code block
+                content = content.replace(
+                    f'[{text}]({file_path})', f'```{file_extension[1:]}\n{file_content}\n```')
 
     return content
 
@@ -67,12 +69,16 @@ def main():
 
     # Use the function and print the result
     result = parse_content(args.md_file_path)
-    print(f"\n{TerminalColor.HEADER}Parsed content:{TerminalColor.ENDC}\n")
-    print(result)
 
-    # Copy the result to the clipboard
-    pyperclip.copy(result)
-    print(f"\n{TerminalColor.OKBLUE}{TerminalColor.BOLD}Result has been copied to the clipboard!{TerminalColor.ENDC}\n")
+    if result:
+        print(
+            f"\n{TerminalColor.HEADER}{TerminalColor.BOLD}Parsed content:{TerminalColor.ENDC}\n")
+        print(result)
+
+        # Copy the result to the clipboard
+        pyperclip.copy(result)
+        print(
+            f"\n{TerminalColor.OKBLUE}{TerminalColor.BOLD}Result has been copied to the clipboard!{TerminalColor.ENDC}\n")
 
 
 if __name__ == "__main__":
