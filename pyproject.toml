@@ -3,14 +3,14 @@ requires = ["setuptools", "wheel"]
 
 [project]
 name = "prompt-generator"
-version = "0.2"
-description = "Prompt Generator is a flexible and user-friendly package that offers customizable scripts for generating meaningful and context-aware prompts. These prompts can be used to guide the writing, enhancement, and debugging of code."
+version = "0.2.1"
+description = "Prompt Generator is a flexible and user-friendly package that offers customizable scripts for generating effective and context-aware prompts. These prompts can be used to guide the writing, improvement, and debugging of code."
 readme = "README.md"
 requires-python = ">=3.6"
 authors = [
-    {name = "Vincenzo Cascone"},
+    { name = "Vincenzo Cascone" },
 ]
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -19,10 +19,12 @@ classifiers = [
 
 dependencies = [
     "pyperclip",
+    "pathspec",
 ]
 
 [project.scripts]
 parse_md = "markdown_parser:main"
+get_directory_structure = "directory_structure:main"
 
 [project.urls]
 repository = "https://github.com/vincenzocascone/prompt-generator"

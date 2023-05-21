@@ -1,1 +1,1 @@
-from .script import main
+from .parse_md import main
