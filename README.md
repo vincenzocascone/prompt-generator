@@ -31,18 +31,17 @@ pip install prompt-generator
 
 - ### Directory Structure
 
-  This utility provides a clear, nested representation of the folder structure
-  in your project. It has been designed with gitignore compatibility, meaning it will respect the file exclusion rules
-  defined in your project's .gitignore file. This makes it an essential tool for giving the AI a better understanding of
-  the context of your project. The returned JSON is minified in order to be more token efficient.
+  This tool provides a clear, nested representation of the structure of a directory in your project. It has been
+  designed with gitignore compatibility, meaning it will respect the file exclusion rules defined in your project's
+  .gitignore file. This makes it an essential tool for giving the AI a better understanding of the context of your
+  project. The returned JSON is minified in order to be more token efficient.
 
-  To utilize it, use the following command in your terminal, you can optionally provide the .gitignore file path using
-  the -gitignore flag, if not provided, the script will search for a .gitignore file at the root level of the
-  provided directory:
+  To utilize it, use the following command in your terminal. You can optionally provide the .gitignore file path using
+  the -gitignore flag, if not provided, the script will search for a .gitignore file in the root directory:
 
   ```bash
   get_directory_structure <path to the directory> [-gitignore]
   ```
 
-  Upon successful execution, the resultant parsed content will be displayed in your terminal and copied to your
+  Upon successful execution, the resultant json will be displayed in your terminal and copied to your
   clipboard for immediate use or future reference.
