@@ -36,27 +36,27 @@ def get_project_info():
 def generate_prompt_markdown(project_info):
     """Generate the prompt markdown."""
     # Start with project name
-    markdown = f"### {project_info['name']}\n"
+    markdown = f"# {project_info['name']}\n\n"
 
     # Add the project description
-    markdown += f"{project_info['description']}\n"
+    markdown += f"{project_info['description']}\n\n"
 
     # Add the project structure
     gitignore = load_gitignore(project_info['rootDir'])
-    markdown += "## Project Structure\n"
-    markdown += f"```json\n{get_dir_json(project_info['rootDir'], gitignore)}\n```\n"
+    markdown += "## Project Structure\n\n"
+    markdown += f"```json\n{get_dir_json(project_info['rootDir'], gitignore)}\n```\n\n"
 
     # If there are config files, add them
     if 'configFilePaths' in project_info:
         markdown += "## Config Files\n\n"
         for file_path in project_info['configFilePaths']:
-            markdown += f"- {get_code_block(file_path)}\n"
+            markdown += f"- {get_code_block(file_path)}\n\n"
 
     # If there are important files, add them
     if 'importantFiles' in project_info:
         markdown += "## Important Files\n\n"
         for file_path in project_info['importantFiles']:
-            markdown += f"- {get_code_block(file_path)}\n"
+            markdown += f"- {get_code_block(file_path)}\n\n"
 
     # Add the prompt for creating documentation
     markdown += "## Task\n\n"

@@ -15,7 +15,20 @@ pip install prompt-generator
 
 - ### Generate Docs
 
-  This script generates a prompt that can be used to generate documentation for the project.
+  This script generates a prompt that can be used to make the AI write documentation
+  for the project. When executed, it will first ask for some info about the project, such as the name, description, root
+  path. Optionally you can provide the path to config files such as pyproject.toml for a python project or
+  package.json for a node project. The same can be done with particularly relevant files. This will allow the AI to have
+  a better understanding of the project and generate more accurate documentation.
+
+  To utilize it, use the following command in your terminal:
+
+    ```bash
+    generate_docs
+    ```
+
+  Upon successful execution, the resultant prompt will be displayed in your terminal and copied to your clipboard for
+  immediate use or future reference.
 
 - ### Markdown Parser
 
