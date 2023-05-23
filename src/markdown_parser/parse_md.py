@@ -2,16 +2,8 @@ import argparse
 import os
 import re
 
-from print_utils import print_result, print_color, TerminalColor
-
-
-def read_file(file_path):
-    """Reads a file and returns its content."""
-    try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            return file.read()
-    except IOError:
-        print_color(f"Failed to open {file_path}", TerminalColor.WARNING)
+from file_utils import read_file, get_code_block
+from print_utils import print_result
 
 
 def parse_links(content, base_path):
@@ -30,7 +22,6 @@ def parse_links(content, base_path):
 
 def replace_link_with_content(content, text, file_path, full_file_path):
     """Replaces link with its corresponding content."""
-    file_content = read_file(full_file_path)
     _, file_extension = os.path.splitext(full_file_path)
 
     if file_extension == '.md':
@@ -39,7 +30,7 @@ def replace_link_with_content(content, text, file_path, full_file_path):
             f'[{text}]({file_path})', f'{file_content}')
     else:
         content = content.replace(
-            f'[{text}]({file_path})', f'```{file_extension[1:]}\n{file_content}\n```')
+            f'[{text}]({file_path})', get_code_block(full_file_path))
 
     return content
 

@@ -3,7 +3,7 @@ requires = ["setuptools", "wheel"]
 
 [project]
 name = "prompt-generator"
-version = "0.2.1"
+version = "0.2.5"
 description = "Prompt Generator is a flexible and user-friendly package that offers customizable scripts for generating effective and context-aware prompts. These prompts can be used to guide the writing, improvement, and debugging of code."
 readme = "README.md"
 requires-python = ">=3.6"
@@ -25,6 +25,7 @@ dependencies = [
 [project.scripts]
 parse_md = "markdown_parser:main"
 get_directory_structure = "directory_structure:main"
+generate_docs = "docs_generator:main"
 
 [project.urls]
 repository = "https://github.com/vincenzocascone/prompt-generator"

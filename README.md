@@ -13,6 +13,10 @@ pip install prompt-generator
 
 ## Features
 
+- ### Generate Docs
+
+  This script generates a prompt that can be used to generate documentation for the project.
+
 - ### Markdown Parser
 
   The Markdown Parser is a robust utility specifically designed to parse markdown files. It works by replacing all
