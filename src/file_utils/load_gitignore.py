@@ -13,10 +13,9 @@ def load_gitignore(root_dir, gitignore_path=None):
     else:
         gitignore_file = Path(root_dir) / '.gitignore'
 
+    gitignore = ['.git/']  # Always ignore .git directory
     if gitignore_file.exists():
         with gitignore_file.open('r', encoding='utf-8') as file:
-            gitignore = file.read().splitlines()
-    else:
-        gitignore = []
+            gitignore += file.read().splitlines()
 
     return pathspec.PathSpec.from_lines('gitwildmatch', gitignore)
