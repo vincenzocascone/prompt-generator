@@ -23,9 +23,7 @@ dependencies = [
 ]
 
 [project.scripts]
-parse_md = "markdown_parser:main"
-get_directory_structure = "directory_structure:main"
-generate_docs = "docs_generator:main"
+pg = "prompt_generator.run:main"
 
 [project.urls]
 repository = "https://github.com/vincenzocascone/prompt-generator"
