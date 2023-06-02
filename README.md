@@ -64,6 +64,8 @@ pip install prompt-generator
   It will ask for the project name, description or the path to README/docs, root directory, and optionally the paths and
   labels to the files related to the tasks. Finally, it will ask for the single task or task list.
 
+  Instead of writing the info manually you can also provide the path to a JSON file that contains the prompt
+  configuration.
   The JSON should have the following structure:
 
   ```
