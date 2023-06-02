@@ -24,7 +24,7 @@ pip install prompt-generator
   To utilize it, use the following command in your terminal:
 
     ```bash
-    generate_docs
+    pg generate_docs
     ```
 
   Upon successful execution, the resultant prompt will be displayed in your terminal and copied to your clipboard for
@@ -40,7 +40,7 @@ pip install prompt-generator
   To utilize it, use the following command in your terminal:
 
   ```bash
-  parse_md <path to the markdown file>
+  pg parse_md <path to the markdown file>
   ```
 
   Upon successful execution, the resultant parsed content will be displayed in your terminal and copied to your
@@ -57,7 +57,7 @@ pip install prompt-generator
   the -gitignore flag, if not provided, the script will search for a .gitignore file in the root directory:
 
   ```bash
-  get_directory_structure <path to the directory> [-gitignore]
+  pg get_directory_structure <path to the directory> [-gitignore]
   ```
 
   Upon successful execution, the resultant json will be displayed in your terminal and copied to your

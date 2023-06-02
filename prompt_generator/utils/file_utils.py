@@ -9,12 +9,13 @@ from .print_utils import PrintUtils, TerminalColor
 
 class FileUtils:
     @staticmethod
-    def get_code_block(file_path):
+    def get_code_block(file_path, file_label=None):
         """Get the code block for a file."""
         file_content = FileUtils.read_file(file_path)
         _, file_extension = os.path.splitext(file_path)
         file_name = os.path.basename(file_path)
-        return f"{file_name}:\n```{file_extension[1:]}\n{file_content}\n```"
+        file_title = f"{f'{file_label} ({file_name})' if file_label else file_name}"
+        return f"{file_title}:\n```{file_extension[1:]}\n{file_content}\n```"
 
     @staticmethod
     def get_dir_json(root_dir, gitignore):
