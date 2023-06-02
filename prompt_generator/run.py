@@ -14,10 +14,11 @@ def get_args():
     parser_generate_docs.add_argument('-c', '--config', type=str,
                                       help="Path to a JSON config file containing the prompt info.")
 
-    parser_directory_structure = subparsers.add_parser("get_directory_structure",
+    parser_directory_structure = subparsers.add_parser("get_dir_json",
                                                        help="Get directory structure of a project.")
     parser_directory_structure.add_argument("root_dir", type=str, help="Root directory of the project.")
-    parser_directory_structure.add_argument("--gitignore", type=str, help="Path to the .gitignore file.", default=None)
+    parser_directory_structure.add_argument("-g", "--gitignore", type=str, help="Path to the .gitignore file.",
+                                            default=None)
 
     parser_markdown_parser = subparsers.add_parser("parse_md",
                                                    help="Parse markdown file, replacing links with the content of the "
@@ -33,7 +34,7 @@ def main():
 
     if args.command == "generate_docs":
         generate_docs_main(args)
-    elif args.command == "get_directory_structure":
+    elif args.command == "get_dir_json":
         directory_structure_main(args)
     elif args.command == "parse_md":
         markdown_parser_main(args)

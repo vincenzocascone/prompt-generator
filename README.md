@@ -84,7 +84,7 @@ pip install prompt-generator
   the -gitignore flag, if not provided, the script will search for a .gitignore file in the root directory:
 
   ```bash
-  pg get_directory_structure <path to the directory> [-gitignore]
+  pg get_dir_json <path to the directory> [--gitignore <path to the .gitignore file>]
   ```
 
   Upon successful execution, the resultant json will be displayed in your terminal and copied to your

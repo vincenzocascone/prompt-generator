@@ -8,27 +8,27 @@ def parse_links(content, base_path):
     """Parses links within the content."""
     links = re.findall(r'\[(.*?)]\((.*?)\)', content)
 
-    for text, file_path in links:
+    for file_label, file_path in links:
         full_file_path = os.path.join(base_path, file_path)
 
         if os.path.isfile(full_file_path):
             content = replace_link_with_content(
-                content, text, file_path, full_file_path)
+                content, file_label, file_path, full_file_path)
 
     return content
 
 
-def replace_link_with_content(content, text, file_path, full_file_path):
+def replace_link_with_content(content, file_label, file_path, full_file_path):
     """Replaces link with its corresponding content."""
     _, file_extension = os.path.splitext(full_file_path)
 
     if file_extension == '.md':
         file_content = parse_content(full_file_path)
         content = content.replace(
-            f'[{text}]({file_path})', f'{file_content}')
+            f'[{file_label}]({file_path})', f'{file_content}')
     else:
         content = content.replace(
-            f'[{text}]({file_path})', FileUtils.get_code_block(full_file_path))
+            f'[{file_label}]({file_path})', FileUtils.get_code_block(full_file_path, file_label))
 
     return content
 
