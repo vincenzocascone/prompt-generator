@@ -7,19 +7,20 @@ def get_user_input():
     """
     Get the user input for the prompt.
     """
-    config = {}
-    PrintUtils.print_color("Provide the following prompt data.", TerminalColor.CYAN)
-    config['name'] = InputUtils.color_input("Project Name: ")
-    config['description'] = InputUtils.color_input("Project Description: ")
-    config['target_audience'] = InputUtils.color_input("Target Audience", optional=True)
-    config['root_dir'] = InputUtils.color_input("Root Directory Path: ")
+    prompt_config = {}
+    PrintUtils.print_color("Provide the following data in order to generate the prompt",
+                           TerminalColor.CYAN)
+    prompt_config['name'] = InputUtils.color_input("Project Name: ")
+    prompt_config['description'] = InputUtils.color_input("Project Description: ")
+    prompt_config['target_audience'] = InputUtils.color_input("Target Audience", optional=True)
+    prompt_config['root_dir'] = InputUtils.color_input("Root Directory Path: ")
 
     if InputUtils.yes_no_input("Do you want to provide any config/dependencies files? (Y/n): "):
-        config['config_files'] = InputUtils.file_list_input()
+        prompt_config['config_files'] = InputUtils.file_list_input()
     if InputUtils.yes_no_input("Do you want to provide any important files? (Y/n): "):
-        config['main_files'] = InputUtils.file_list_input()
-    config['docs_specs'] = InputUtils.color_input("Describe how the documentation should be: ", optional=True)
-    return config
+        prompt_config['main_files'] = InputUtils.file_list_input()
+    prompt_config['docs_specs'] = InputUtils.color_input("Describe how the documentation should be: ", optional=True)
+    return prompt_config
 
 
 def generate_prompt_markdown(prompt_config):

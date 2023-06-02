@@ -13,7 +13,7 @@ pip install prompt-generator
 
 ## Features
 
-- ### Generate Docs
+- ### Generate Project Documentation
 
   This script generates a prompt that can be used to make the AI write documentation for the project.
 
@@ -51,7 +51,43 @@ pip install prompt-generator
   To utilize this script, use the following command in your terminal:
 
   ```bash
-  pg generate_docs [--config <path to config file>]
+  pg docs_prompt [--config <path to config file>]
+  ```
+
+  Upon successful execution, the resultant prompt will be displayed in your terminal and copied to your clipboard for
+  immediate use or future reference.
+
+- ### Complete Tasks
+
+  This script generates a prompt that can be used to help AI complete tasks for the project.
+
+  It will ask for the project name, description or the path to README/docs, root directory, and optionally the paths and
+  labels to the files related to the tasks. Finally, it will ask for the single task or task list.
+
+  The JSON should have the following structure:
+
+  ```
+  {
+    "project_overview": "<string> (optional)",
+    "docs_path": "<string> (optional)",
+    "relevant_files": [
+      {
+        "path": "<string> (required)",
+        "label": "<string> (optional)"
+      },
+      ...
+    ] (optional),
+    "tasks": [
+      "<string> (required)",
+      ...
+    ] (required)
+  }
+  ```
+
+  To utilize this script, use the following command in your terminal:
+
+  ```bash
+  pg tasks_prompt [--config <path to config file>]
   ```
 
   Upon successful execution, the resultant prompt will be displayed in your terminal and copied to your clipboard for
@@ -84,7 +120,7 @@ pip install prompt-generator
   the -gitignore flag, if not provided, the script will search for a .gitignore file in the root directory:
 
   ```bash
-  pg get_dir_json <path to the directory> [--gitignore <path to the .gitignore file>]
+  pg get_dir_structure <path to the directory> [--gitignore <path to the .gitignore file>]
   ```
 
   Upon successful execution, the resultant json will be displayed in your terminal and copied to your

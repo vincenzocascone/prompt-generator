@@ -13,7 +13,7 @@ def get_args():
 
 
 def main(args):
-    """Main function of the directory structure."""
+    """Main function to get the directory structure as json."""
     root_dir = args.root_dir
     gitignore_path = args.gitignore
 
