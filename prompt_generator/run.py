@@ -20,7 +20,8 @@ def get_args():
     parser_directory_structure.add_argument("--gitignore", type=str, help="Path to the .gitignore file.", default=None)
 
     parser_markdown_parser = subparsers.add_parser("parse_md",
-                                                   help="Parse markdown file, replacing links with the content of the linked files.")
+                                                   help="Parse markdown file, replacing links with the content of the "
+                                                        "linked files.")
     parser_markdown_parser.add_argument("md_file_path", type=str, help="Path to the markdown file to parse.")
 
     return parser.parse_args()

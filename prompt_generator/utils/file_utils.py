@@ -18,9 +18,19 @@ class FileUtils:
         return f"{file_title}:\n```{file_extension[1:]}\n{file_content}\n```"
 
     @staticmethod
+    def get_files_list(header, files):
+        """Get the files list."""
+        section = header
+        for file in files:
+            path = file['path']
+            label = file.get('label', None)
+            section += f"- {FileUtils.get_code_block(path, label)}\n\n"
+        return section
+
+    @staticmethod
     def get_dir_json(root_dir, gitignore):
         """
-        Creates a nested dictionary that represents the folder structure of root_dir
+        Returns a JSON representation of the directory structure.
         """
         root = Path(root_dir)
         dir_dict = {'type': 'directory',
@@ -81,3 +91,20 @@ class FileUtils:
                 return file.read()
         except IOError:
             PrintUtils.print_color(f"Failed to open {file_path}", TerminalColor.WARNING)
+
+    @staticmethod
+    def get_config_from_json(path):
+        """
+        Load a config from a JSON file.
+        """
+        try:
+            with open(path, 'r') as f:
+                config = json.load(f)
+        except FileNotFoundError:
+            PrintUtils.print_color("Configuration file not found.", TerminalColor.BLUE)
+            return None
+        except json.JSONDecodeError:
+            PrintUtils.print_color("Invalid JSON configuration file.", TerminalColor.BLUE)
+            return None
+
+        return config

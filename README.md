@@ -15,17 +15,44 @@ pip install prompt-generator
 
 - ### Generate Docs
 
-  This script generates a prompt that can be used to make the AI write documentation
-  for the project. When executed, it will first ask for some info about the project, such as the name, description, root
-  path. Optionally you can provide the path to config files such as pyproject.toml for a python project or
-  package.json for a node project. The same can be done with particularly relevant files. This will allow the AI to have
-  a better understanding of the project and generate more accurate documentation.
+  This script generates a prompt that can be used to make the AI write documentation for the project.
 
-  To utilize it, use the following command in your terminal:
+  When executed without arguments it will ask for some info about the project, such as the name, description, root
+  directory, paths to config files, main files, and docs specs.
 
-    ```bash
-    pg generate_docs
-    ```
+  Instead of writing the info manually you can also provide the path to a JSON file that contains the prompt
+  configuration.
+  The JSON should have the following structure:
+
+  ```
+  {
+    "name": "<string> (required)",
+    "description": "<string> (required)",
+    "target_audience": "<string> (optional)",
+    "root_dir": "<string> (required)",
+    "config_files": [
+        {
+            "path": "<string> (required)",
+            "label": "<string> (optional)"
+        },
+        ...
+    ] (optional),
+    "main_files": [
+        {
+            "path": "<string> (required)",
+            "label": "<string> (optional)"
+        },
+        ...
+    ] (optional),
+    "docs_specs": "<string> (optional)"
+  }
+  ```
+
+  To utilize this script, use the following command in your terminal:
+
+  ```bash
+  pg generate_docs [--config <path to config file>]
+  ```
 
   Upon successful execution, the resultant prompt will be displayed in your terminal and copied to your clipboard for
   immediate use or future reference.

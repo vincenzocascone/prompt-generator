@@ -30,3 +30,8 @@ class PrintUtils:
         pyperclip.copy(result)
         PrintUtils.print_color("The result has been copied to the clipboard!",
                                f"{TerminalColor.BLUE}{TerminalColor.BOLD}")
+
+    @staticmethod
+    def print_error(error: str):
+        """Helper function to print an error message."""
+        PrintUtils.print_color(error, TerminalColor.FAIL)
